@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+	<title>Form Validation</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+<body>
+    <div class="main-container">
+      <div id="val-box" hidden>
+        <h2 id="val-msg"></h2>
+        <ul id="val-list"></ul>
+    </div>
+        <div class="logo">
+          <h1 id="bienvenida">¡Bienvenido!</h1>
+          <h2 id="bienvenida2">¿Que deseas Hacer?</h2>
+        </div>
+        <div>
+            <button id="add_act" type="button">Agregar Actividad</button><br>
+            <button id="see_act" type="button">Ver Listado de Actividades</button><br>
+            <button id="see_stats" type="button">Estadísticas</button><br>
+        </div>
+        <div class="divisor">
+            <h3>Últimas Actividades</h3>
+            <table class="tabla-resumen">
+              <thead>
+                <tr>
+                  <th>Inicio</th>
+                  <th>Término</th>
+                  <th>Comuna</th>
+                  <th>Sector</th>
+                  <th>Tema</th>
+                  <th>Foto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td>02/04/2025 <br> 2:30:23</td>
+                    <td>03/04/2025 <br> 5:12:45</td>
+                    <td>Providencia</td>
+                    <td>calle1234</td>
+                    <td>Taller de casa en minecraft</td>
+                    <td><img src="https://st3.idealista.com/news/archivos/styles/fullwidth_xl/public/2022-06/minecraft-gedd13b208_1280.jpg?VersionId=MMoJSb6U7jyHNYdUcjEfBcuHC.Neilpd&itok=0g8D5Lsj" alt="casa minecraft" class="tabla-img"></td>
+                  </tr>
+                  <tr>
+                    <td>28/03/2025 <br> 3:45:10</td>
+                    <td>30/03/2025 <br> 6:22:55</td>
+                    <td>Maipú</td>
+                    <td>calle siempreviva</td>
+                    <td>jardin la granjita</td>
+                    <td><img src="https://img.freepik.com/vector-gratis/escena-granja-naturaleza-granero-espantapajaros_1308-46264.jpg?semt=ais_hybrid&w=740" alt="Foto jardin granjita" class="tabla-img"></td>
+                  </tr>
+                  <tr>
+                    <td>25/03/2025 <br> 9:18:30</td>
+                    <td>26/03/2025 <br> 11:50:02</td>
+                    <td>Puente Alto</td>
+                    <td>la callesita 7898</td>
+                    <td>improvisación rapera</td>
+                    <td><img src="https://i.ytimg.com/vi/b5RRtq6oVxI/mqdefault.jpg" alt="Foto rap" class="tabla-img"></td>
+                  </tr>
+                  <tr>
+                    <td>20/03/2025 <br> 4:00:15</td>
+                    <td>21/03/2025 <br> 7:33:41</td>
+                    <td>Ñuñoa</td>
+                    <td>la casa de mi abuelita</td>
+                    <td>paintball</td>
+                    <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTVmrvYM2UOGX8OAXDaB2Rk_5ulbOdXdcPLg&s" alt="Foto paintball" class="tabla-img"></td>
+                  </tr>
+                  <tr>
+                    <td>15/03/2025 <br> 8:22:17</td>
+                    <td>16/03/2025 <br> 10:44:50</td>
+                    <td>La Florida</td>
+                    <td>detras de una caja</td>
+                    <td>la escondidas</td>
+                    <td><img src="https://png.pngtree.com/element_our/20190603/ourmid/pngtree-office-storage-box-illustration-image_1464101.jpg" alt="Foto escondite" class="tabla-img"></td>
+                  </tr>                  
+              </tbody>
+            </table>
+          </div>
+    </div>
+
+<script src="./js/select.js"></script>
+<script src="./js/validation.js"></script>
+<script src="./js/conector.js"></script>
+</body>
+</html>

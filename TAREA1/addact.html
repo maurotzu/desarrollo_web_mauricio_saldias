@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+	<title>Form Validation</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <button id="portada" type="button">Portada</button>
+        <form name="myForm" method="post" enctype="multipart/form-data">
+            <div class="logo">
+                <h1 id="bienvenida">Añade una Actividad</h1>
+            </div>
+            <div>
+                <H2>¿Donde sera la actividad?</H2>
+            </div>
+            <label for="select-department">Region:</label>
+            <select name="select-department" id="select-department" required>
+                <option value="">Seleccione una Region</option>
+            </select><br>
+
+            <label for="select-course">Comuna:</label>
+            <select name="select-course" id="select-course" required>
+                <option value="">Seleccione una Comuna </option>
+            </select><br>
+
+            <label for="reason" style="display: none;">Sector:</label>
+            <textarea name="comments" id="comments" rows="4" cols="50" maxlength="100" style="display: none;"></textarea><br>
+
+            <H2>¿Quién organiza la actividad?</H2>
+
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" minlength="4" maxlength="200" required><br>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" minlength="15" maxlength="100" required><br>
+
+            <label for="phone">Celular</label>
+            <input type="tel" name="phone" id="phone" placeholder="+569.12345678" maxlength="15"><br>
+            
+            <div class="check">
+                <div><H3>¿Por donde te contactamos?</H3></div>
+                <input type="checkbox" name="whatsapp" onclick="revisaCheck(this);"> whatsapp
+                <input id="whatsapp" type="text" name="whatsapp-id" style="display:none;"> <br>
+                <input type="checkbox" name="instagram" onclick="revisaCheck(this);"> instagram
+                <input id="instagram" type="text" name="instagram-id" style="display:none;"><br>
+                <input type="checkbox" name="telegram" onclick="revisaCheck(this);"> telegram
+                <input id="telegram" type="text" name="telegram-id" style="display:none;"><br>
+                <input type="checkbox" name="x" onclick="revisaCheck(this);"> X
+                <input id="x" type="text" name="x-id" style="display:none;">
+            </div>
+
+            <H2>¿Cuando y de que trata?</H2>
+
+            <label for="horaInicio">Hora de inicio</label>
+            <input type="datetime-local" name="horaInicio" id="horaInicio"><br>
+
+            <label for="horaFin">Hora de fin</label>
+            <input type="datetime-local" name="horaFin" id="horaFin"><br>
+
+            <label for="descripcion">Descripción</label>
+            <textarea name="descripcion" id="descripcion" cols="50" rows="10" maxlength="500"></textarea><br>
+            
+            <label for="imagenes">Imágenes</label>
+            <input type="file" name="imagenes" id="imagenes" multiple accept="image/*,.pdf" required><br>
+
+            <input type="file" name="imagenes_oculta1" id="imagenes_oculta1" multiple accept="image/*,.pdf" style="display: none;">
+            <input type="file" name="imagenes_oculta2" id="imagenes_oculta2" multiple accept="image/*,.pdf" style="display: none;">
+            <input type="file" name="imagenes_oculta3" id="imagenes_oculta3" multiple accept="image/*,.pdf" style="display: none;">
+            <input type="file" name="imagenes_oculta4" id="imagenes_oculta4" multiple accept="image/*,.pdf" style="display: none;">
+            <button id="mostrar-mas" type="button">Agregar otra foto</button>
+
+            <label for="select-tema">Tema:</label>
+            <select name="select-tema" id="select-tema" required>
+                <option value="">Seleccione un Tema</option>
+            </select><br>
+            <label for="select-tema2" style="display: none;">Especifique:</label>
+            <textarea name="tema-especifico" id="select-tema2" rows="4" cols="50" maxlength="100" style="display: none;"></textarea><br>
+        </form>
+        <div id="val-box" hidden>
+            <h2 id="val-msg"></h2>
+            <ul id="val-list"></ul>
+        </div>
+        <div id="val-box2" hidden>
+            <h2 id="val-msg2">Felicitaciones actividad creada, osea es mentira pues no he hecho nada, pero aun asi</h2>
+        </div>
+        <button id="submit-btn" type="button">Enviar</button>
+    </div>
+<script src="./js/select.js"></script>
+<script src="./js/validation.js"></script>
+<script src="./js/conector.js"></script>
+</body>
+</html>

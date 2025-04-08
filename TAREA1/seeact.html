@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+	<title>Form Validation</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <div id="val-box" hidden>
+            <h2 id="val-msg"></h2>
+            <ul id="val-list"></ul>
+        </div>
+        <button id="portada" type="button">Portada</button>
+          <div class="divisor" id="divisor">
+            <h3>Últimas Actividades</h3>
+            <table class="tabla-resumen">
+              <thead>
+                <tr>
+                  <th>Inicio</th>
+                  <th>Término</th>
+                  <th>Comuna</th>
+                  <th>Sector</th>
+                  <th>Tema</th>
+                  <th>Nombre Organizador</th>
+                  <th>Total fotos</th>
+                  <th>Ver más</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>02/04/2025 <br> 2:30:23</td>
+                  <td>03/04/2025 <br> 5:12:45</td>
+                  <td>Providencia</td>
+                  <td>calle1234</td>
+                  <td>Taller de casa en Minecraft</td>
+                  <td>Casa Creativa</td>
+                  <td>5</td>
+                  <td><button id="ver más1" type="button">Ver más</button></td>
+                </tr>
+                <tr>
+                  <td>28/03/2025 <br> 3:45:10</td>
+                  <td>30/03/2025 <br> 6:22:55</td>
+                  <td>Maipú</td>
+                  <td>calle Siempreviva</td>
+                  <td>Jardín La Granjita</td>
+                  <td>La Granjita</td>
+                  <td>5</td>
+                  <td><button id="ver más2" type="button">Ver más</button></td>
+                </tr>
+                <tr>
+                  <td>25/03/2025 <br> 9:18:30</td>
+                  <td>26/03/2025 <br> 11:50:02</td>
+                  <td>Puente Alto</td>
+                  <td>La Callesita 7898</td>
+                  <td>Improvisación rapera</td>
+                  <td>Rap house</td>
+                  <td>5</td>
+                  <td><button id="ver más3" type="button">Ver más</button></td>
+                </tr>
+                <tr>
+                  <td>20/03/2025 <br> 4:00:15</td>
+                  <td>21/03/2025 <br> 7:33:41</td>
+                  <td>Ñuñoa</td>
+                  <td>La casa de mi abuelita</td>
+                  <td>Paintball</td>
+                  <td>PaintFun</td>
+                  <td>5</td>
+                  <td><button id="ver más4" type="button">Ver más</button></td>
+                </tr>
+                <tr>
+                  <td>15/03/2025 <br> 8:22:17</td>
+                  <td>16/03/2025 <br> 10:44:50</td>
+                  <td>La Florida</td>
+                  <td>Detrás de una caja</td>
+                  <td>La escondidas</td>
+                  <td>Escondite ProLeague</td>
+                  <td>5</td>
+                  <td><button id="ver más5" type="button">Ver más</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        <div id="fina1" hidden>
+            <h2>¡Actividad 1!</h2>
+            <p>Fecha de inicio: 02/04/2025 2:30:23</p>
+            <p>Fecha de término: 03/04/2025 5:12:45</p>
+            <p>Comuna: Providencia</p>
+            <p>Sector: calle1234</p>
+            <p>Tema: Taller de casa en Minecraft</p>
+            <p>Organizador: Casa Creativa</p>
+            <img src="https://st3.idealista.com/news/archivos/styles/fullwidth_xl/public/2022-06/minecraft-gedd13b208_1280.jpg?VersionId=MMoJSb6U7jyHNYdUcjEfBcuHC.Neilpd&itok=0g8D5Lsj" alt="casa minecraft" class="tabla-img">
+            <img src="https://img.freepik.com/vector-gratis/escena-granja-naturaleza-granero-espantapajaros_1308-46264.jpg?semt=ais_hybrid&w=740" alt="Foto jardin granjita" class="tabla-img">
+            <img src="https://i.ytimg.com/vi/b5RRtq6oVxI/mqdefault.jpg" alt="Foto rap" class="tabla-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTVmrvYM2UOGX8OAXDaB2Rk_5ulbOdXdcPLg&s" alt="Foto paintball" class="tabla-img">
+            <img src="https://png.pngtree.com/element_our/20190603/ourmid/pngtree-office-storage-box-illustration-image_1464101.jpg" alt="Foto escondite" class="tabla-img">
+            <button onclick="volver('fina1')">Volver</button>
+        </div>
+        
+        <div id="fina2" hidden>
+            <h2>¡Actividad 2!</h2>
+            <p>Fecha de inicio: 28/03/2025 3:45:10</p>
+            <p>Fecha de término: 30/03/2025 6:22:55</p>
+            <p>Comuna: Maipú</p>
+            <p>Sector: calle Siempreviva</p>
+            <p>Tema: Jardín La Granjita</p>
+            <p>Organizador: La Granjita</p>
+            <img src="https://st3.idealista.com/news/archivos/styles/fullwidth_xl/public/2022-06/minecraft-gedd13b208_1280.jpg?VersionId=MMoJSb6U7jyHNYdUcjEfBcuHC.Neilpd&itok=0g8D5Lsj" alt="casa minecraft" class="tabla-img">
+            <img src="https://img.freepik.com/vector-gratis/escena-granja-naturaleza-granero-espantapajaros_1308-46264.jpg?semt=ais_hybrid&w=740" alt="Foto jardin granjita" class="tabla-img">
+            <img src="https://i.ytimg.com/vi/b5RRtq6oVxI/mqdefault.jpg" alt="Foto rap" class="tabla-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTVmrvYM2UOGX8OAXDaB2Rk_5ulbOdXdcPLg&s" alt="Foto paintball" class="tabla-img">
+            <img src="https://png.pngtree.com/element_our/20190603/ourmid/pngtree-office-storage-box-illustration-image_1464101.jpg" alt="Foto escondite" class="tabla-img">
+            <button onclick="volver('fina2')">Volver</button>
+        </div>
+        
+        <div id="fina3" hidden>
+            <h2>¡Actividad 3!</h2>
+            <p>Fecha de inicio: 25/03/2025 9:18:30</p>
+            <p>Fecha de término: 26/03/2025 11:50:02</p>
+            <p>Comuna: Puente Alto</p>
+            <p>Sector: La Callesita 7898</p>
+            <p>Tema: Improvisación rapera</p>
+            <p>Organizador: Rap house</p>
+            <img src="https://st3.idealista.com/news/archivos/styles/fullwidth_xl/public/2022-06/minecraft-gedd13b208_1280.jpg?VersionId=MMoJSb6U7jyHNYdUcjEfBcuHC.Neilpd&itok=0g8D5Lsj" alt="casa minecraft" class="tabla-img">
+            <img src="https://img.freepik.com/vector-gratis/escena-granja-naturaleza-granero-espantapajaros_1308-46264.jpg?semt=ais_hybrid&w=740" alt="Foto jardin granjita" class="tabla-img">
+            <img src="https://i.ytimg.com/vi/b5RRtq6oVxI/mqdefault.jpg" alt="Foto rap" class="tabla-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTVmrvYM2UOGX8OAXDaB2Rk_5ulbOdXdcPLg&s" alt="Foto paintball" class="tabla-img">
+            <img src="https://png.pngtree.com/element_our/20190603/ourmid/pngtree-office-storage-box-illustration-image_1464101.jpg" alt="Foto escondite" class="tabla-img">
+            <button onclick="volver('fina3')">Volver</button>
+        </div>
+        
+        <div id="fina4" hidden>
+            <h2>¡Actividad 4!</h2>
+            <p>Fecha de inicio: 20/03/2025 4:00:15</p>
+            <p>Fecha de término: 21/03/2025 7:33:41</p>
+            <p>Comuna: Ñuñoa</p>
+            <p>Sector: La casa de mi abuelita</p>
+            <p>Tema: Paintball</p>
+            <p>Organizador: PaintFun</p>
+            <img src="https://st3.idealista.com/news/archivos/styles/fullwidth_xl/public/2022-06/minecraft-gedd13b208_1280.jpg?VersionId=MMoJSb6U7jyHNYdUcjEfBcuHC.Neilpd&itok=0g8D5Lsj" alt="casa minecraft" class="tabla-img">
+            <img src="https://img.freepik.com/vector-gratis/escena-granja-naturaleza-granero-espantapajaros_1308-46264.jpg?semt=ais_hybrid&w=740" alt="Foto jardin granjita" class="tabla-img">
+            <img src="https://i.ytimg.com/vi/b5RRtq6oVxI/mqdefault.jpg" alt="Foto rap" class="tabla-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTVmrvYM2UOGX8OAXDaB2Rk_5ulbOdXdcPLg&s" alt="Foto paintball" class="tabla-img">
+            <img src="https://png.pngtree.com/element_our/20190603/ourmid/pngtree-office-storage-box-illustration-image_1464101.jpg" alt="Foto escondite" class="tabla-img">
+            <button onclick="volver('fina4')">Volver</button>
+        </div>
+        
+        <div id="fina5" hidden>
+            <h2>¡Actividad 5!</h2>
+            <p>Fecha de inicio: 15/03/2025 8:22:17</p>
+            <p>Fecha de término: 16/03/2025 10:44:50</p>
+            <p>Comuna: La Florida</p>
+            <p>Sector: Detrás de una caja</p>
+            <p>Tema: La escondidas</p>
+            <p>Organizador: Escondite ProLeague</p>
+            <img src="https://st3.idealista.com/news/archivos/styles/fullwidth_xl/public/2022-06/minecraft-gedd13b208_1280.jpg?VersionId=MMoJSb6U7jyHNYdUcjEfBcuHC.Neilpd&itok=0g8D5Lsj" alt="casa minecraft" class="tabla-img">
+            <img src="https://img.freepik.com/vector-gratis/escena-granja-naturaleza-granero-espantapajaros_1308-46264.jpg?semt=ais_hybrid&w=740" alt="Foto jardin granjita" class="tabla-img">
+            <img src="https://i.ytimg.com/vi/b5RRtq6oVxI/mqdefault.jpg" alt="Foto rap" class="tabla-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTVmrvYM2UOGX8OAXDaB2Rk_5ulbOdXdcPLg&s" alt="Foto paintball" class="tabla-img">
+            <img src="https://png.pngtree.com/element_our/20190603/ourmid/pngtree-office-storage-box-illustration-image_1464101.jpg" alt="Foto escondite" class="tabla-img">
+            <button onclick="volver('fina5')">Volver</button>
+        </div>
+        
+        
+
+<script src="./js/select.js"></script>
+<script src="./js/validation.js"></script>
+<script src="./js/conector.js"></script>
+</body>
+</html>
