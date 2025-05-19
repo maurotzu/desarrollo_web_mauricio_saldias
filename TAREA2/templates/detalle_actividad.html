@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle de Actividad</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <div class="detalles-actividad">
+    <a href="{{ url_for('actividades_table') }}" class="btn-volver">← Volver al listado</a>
+    <h2>¡Actividad #{{ actividad.id }}!</h2>
+    
+    <div class="info-actividad">
+      <p><strong>Fecha de inicio:</strong> {{ actividad.dia_hora_inicio }}</p>
+      <p><strong>Fecha de término:</strong> {{ actividad.dia_hora_termino }}</p>
+      <p><strong>Región:</strong> {{ actividad.region }}</p>
+      <p><strong>Comuna:</strong> {{ actividad.comuna }}</p>
+      <p><strong>Sector:</strong> {{ actividad.sector }}</p>
+      <p><strong>Tema:</strong> {{ actividad.tema_principal }}{% if actividad.glosa_otro %} ({{ actividad.glosa_otro }}){% endif %}</p>
+      <p><strong>Organizador:</strong> {{ actividad.nombre_organizador }}</p>
+      <p><strong>Email:</strong> {{ actividad.email }}</p>
+      <p><strong>Teléfono:</strong> {{ actividad.celular }}</p>
+      <p><strong>Descripción:</strong> {{ actividad.descripcion }}</p>
+      
+      {% if actividad.contactos %}
+      <div class="contactos-adicionales">
+        <p><strong>Contactos adicionales:</strong></p>
+        <ul>
+          {% for tipo, identificadores in actividad.contactos.items() %}
+            {% for id in identificadores %}
+              <li>{{ tipo|capitalize }}: {{ id }}</li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+    
+    <div class="galeria-fotos">
+      <p><strong>Fotos ({{ actividad.total_fotos }}):</strong></p>
+      {% for foto in actividad.fotos %}
+      <img src="{{ url_for('static', filename='uploads/' + foto.nombre_archivo) }}" 
+           alt="Foto actividad {{ loop.index }}" class="foto-actividad">
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

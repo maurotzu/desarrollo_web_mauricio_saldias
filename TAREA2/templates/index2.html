@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="main-container">
+      <div id="val-box" hidden>
+        <h2 id="val-msg"></h2>
+        <ul id="val-list"></ul>
+      </div>
+      <div class="logo">
+        <h1 id="bienvenida">¡Bienvenido!</h1>
+        <h2 id="bienvenida2">¿Que deseas Hacer?</h2>
+      </div>
+      <div>
+        <a href="{{ url_for('add_activity') }}" class="btn-main">Agregar Actividad</a>
+        <a href="{{ url_for('actividades_table') }}" class="btn-main">Ver Listado de Actividades</a>
+        <a href="{{ url_for('see_stats') }}" class="btn-main">Estadísticas</a>
+      </div>
+      <div class="divisor">
+        <h3>Últimas Actividades</h3>
+        <table class="tabla-resumen">
+          <thead>
+            <tr>
+              <th>Inicio</th>
+              <th>Término</th>
+              <th>Comuna</th>
+              <th>Sector</th>
+              <th>Tema</th>
+              <th>Foto</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if actividades %}
+              {% for actividad in actividades %}
+              <tr>
+                <td>{{ actividad.inicio|safe }}</td>
+                <td>{{ actividad.termino|safe }}</td>
+                <td>{{ actividad.comuna }}</td>
+                <td>{{ actividad.sector }}</td>
+                <td>{{ actividad.tema }}</td>
+                <td><img src="{{ url_for('static', filename=actividad.foto_url) }}" alt="Foto actividad" class="tabla-img"></td>
+              </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+                <td colspan="6">No hay actividades registradas</td>
+              </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/select_db.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+</body>
+</html>
