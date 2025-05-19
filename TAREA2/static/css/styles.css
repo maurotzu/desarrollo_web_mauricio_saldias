@@ -10,6 +10,27 @@ body {
     min-height: 100vh;
 }
 
+#mostrar-mas {
+  color: blue;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  float: right; 
+  text-decoration: none; 
+}
+
+#mostrar-mas:hover {
+  text-decoration: underline; 
+}
+
+#mostrar-mas:disabled {
+  color: red !important; 
+  cursor: not-allowed; 
+}
+
 .main-container {
     background-color: #fff;
     padding: 20px;
@@ -399,4 +420,3 @@ input:invalid, select:invalid, textarea:invalid {
         grid-template-columns: 1fr;
     }
 }
-
