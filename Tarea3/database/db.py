@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import Column, Integer, String, DateTime, Enum, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
+from datetime import datetime
 
 # Configuración de la base de datos
 DATABASE_URL = "mysql+pymysql://cc5002:programacionweb@localhost:3306/tarea2"
@@ -60,6 +61,15 @@ class ActividadTema(Base):
     tema = Column(Enum('música', 'deporte', 'ciencias', 'religión', 'política', 'tecnología', 
                       'juegos', 'baile', 'comida', 'otro', name='actividad_tema_tema'), nullable=False)
     glosa_otro = Column(String(15))
+    actividad_id = Column(Integer, ForeignKey('actividad.id'), nullable=False)
+
+class Comentario(Base):
+    __tablename__ = 'comentario'
+    
+    id = Column(Integer, primary_key=True)
+    nombre = Column(String(80), nullable=False)
+    texto = Column(String(300), nullable=False)
+    fecha = Column(DateTime, nullable=False, default=datetime.utcnow)
     actividad_id = Column(Integer, ForeignKey('actividad.id'), nullable=False)
 
 def get_db():
@@ -174,10 +184,43 @@ def get_temas_by_actividad(actividad_id):
     session.close()
     return temas
 
+def create_comentario(actividad_id, nombre, texto):
+    session = SessionLocal()
+    new_comentario = Comentario(
+        actividad_id=actividad_id,
+        nombre=nombre,
+        texto=texto
+    )
+    session.add(new_comentario)
+    session.commit()
+    comentario_id = new_comentario.id
+    session.close()
+    return comentario_id
+
+def get_comentarios_by_actividad(actividad_id, limit=None):
+    session = SessionLocal()
+    query = session.query(Comentario).filter_by(actividad_id=actividad_id).order_by(Comentario.fecha.desc())
+    if limit:
+        query = query.limit(limit)
+    comentarios = query.all()
+    session.close()
+    return comentarios
+
+def get_comentario_by_id(comentario_id):
+    session = SessionLocal()
+    comentario = session.query(Comentario).filter_by(id=comentario_id).first()
+    session.close()
+    return comentario
+
+def get_total_comentarios(actividad_id):
+    session = SessionLocal()
+    total = session.query(Comentario).filter_by(actividad_id=actividad_id).count()
+    session.close()
+    return total
+
 def create_complete_activity(activity_data, fotos, contactos, temas):
     session = SessionLocal()
     try:
-
         new_actividad = Actividad(
             comuna_id=activity_data['comuna_id'],
             sector=activity_data.get('sector'),
@@ -200,7 +243,6 @@ def create_complete_activity(activity_data, fotos, contactos, temas):
             )
             session.add(new_foto)
         
-
         for contacto in contactos:
             new_contacto = ContactarPor(
                 nombre=contacto['nombre'],
@@ -227,7 +269,6 @@ def create_complete_activity(activity_data, fotos, contactos, temas):
         session.close()
 
 def get_complete_activity(actividad_id):
-
     actividad = get_actividad_by_id(actividad_id)
     if not actividad:
         return None
@@ -238,41 +279,19 @@ def get_complete_activity(actividad_id):
         'contactos': get_contactos_by_actividad(actividad_id),
         'temas': get_temas_by_actividad(actividad_id),
         'comuna': get_comuna_by_id(actividad.comuna_id),
-        'region': get_region_by_id(get_comuna_by_id(actividad.comuna_id).region_id)
+        'region': get_region_by_id(get_comuna_by_id(actividad.comuna_id).region_id),
+        'comentarios': get_comentarios_by_actividad(actividad_id)
     }
     
     return result
 
 def get_activities(page_size=5):
-
     session = SessionLocal()
     actividades = session.query(Actividad).order_by(Actividad.dia_hora_inicio.desc()).limit(page_size).all()
     session.close()
     return actividades
 
-def get_comuna_by_id(id):
-
-    session = SessionLocal()
-    comuna = session.query(Comuna).filter_by(id=id).first()
-    session.close()
-    return comuna
-
-def get_fotos_by_actividad(actividad_id):
-
-    session = SessionLocal()
-    fotos = session.query(Foto).filter_by(actividad_id=actividad_id).all()
-    session.close()
-    return fotos
-
-def get_temas_by_actividad(actividad_id):
-
-    session = SessionLocal()
-    temas = session.query(ActividadTema).filter_by(actividad_id=actividad_id).all()
-    session.close()
-    return temas
-
 def get_activity_data_for_display(page_size=5):
-
     data = []
     for actividad in get_activities(page_size):
         comuna = get_comuna_by_id(actividad.comuna_id)
@@ -281,11 +300,9 @@ def get_activity_data_for_display(page_size=5):
         
         foto_url = "uploads/default.jpg"  
         if fotos:
-
             foto_filename = fotos[0].nombre_archivo
             foto_url = f"uploads/{foto_filename}"
         
-
         tema = "No especificado"
         if temas:
             tema = temas[0].tema
@@ -298,13 +315,13 @@ def get_activity_data_for_display(page_size=5):
             "comuna": comuna.nombre if comuna else "No especificado",
             "sector": actividad.sector or "No especificado",
             "tema": tema,
-            "foto_url": foto_url  
+            "foto_url": foto_url,
+            "total_comentarios": get_total_comentarios(actividad.id)
         })
     
     return data
 
 def get_activities_for_summary(page_size=5):
-
     session = SessionLocal()
     try:
         actividades = session.query(Actividad)\
@@ -314,7 +331,6 @@ def get_activities_for_summary(page_size=5):
 
         result = []
         for act in actividades:
-
             comuna = session.query(Comuna).filter_by(id=act.comuna_id).first()
             fotos = session.query(Foto).filter_by(actividad_id=act.id).count()
             temas = session.query(ActividadTema).filter_by(actividad_id=act.id).first()
@@ -341,13 +357,12 @@ def get_complete_activity_details(actividad_id):
         if not actividad:
             return None
 
-
         comuna = session.query(Comuna).filter_by(id=actividad.comuna_id).first()
         region = session.query(Region).filter_by(id=comuna.region_id).first() if comuna else None
         fotos = session.query(Foto).filter_by(actividad_id=actividad_id).all()
         temas = session.query(ActividadTema).filter_by(actividad_id=actividad_id).all()
         contactos = session.query(ContactarPor).filter_by(actividad_id=actividad_id).all()
-
+        comentarios = session.query(Comentario).filter_by(actividad_id=actividad_id).order_by(Comentario.fecha.desc()).all()
 
         tema_principal = None
         glosa_otro = None
@@ -355,7 +370,6 @@ def get_complete_activity_details(actividad_id):
             tema_principal = temas[0].tema
             if tema_principal == 'otro':
                 glosa_otro = temas[0].glosa_otro
-
 
         contactos_por_tipo = {}
         for contacto in contactos:
@@ -379,14 +393,20 @@ def get_complete_activity_details(actividad_id):
             'glosa_otro': glosa_otro,
             'fotos': [{'nombre_archivo': foto.nombre_archivo} for foto in fotos],
             'contactos': contactos_por_tipo,
+            'comentarios': [{
+                'id': c.id,
+                'nombre': c.nombre,
+                'texto': c.texto,
+                'fecha': c.fecha.strftime('%d/%m/%Y %H:%M:%S')
+            } for c in comentarios],
             'total_fotos': len(fotos),
-            'total_contactos': len(contactos)
+            'total_contactos': len(contactos),
+            'total_comentarios': len(comentarios)
         }
     finally:
         session.close()
 
 def get_paginated_activities(page=1, per_page=5):
-
     session = SessionLocal()
     try:
         offset = (page - 1) * per_page

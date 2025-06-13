@@ -43,6 +43,41 @@
            alt="Foto actividad {{ loop.index }}" class="foto-actividad">
       {% endfor %}
     </div>
+
+    <div class="seccion-comentarios">
+      <h3>Comentarios ({{ actividad.total_comentarios }})</h3>
+      <div class="lista-comentarios" id="lista-comentarios">
+        {% for comentario in actividad.comentarios %}
+        <div class="comentario">
+          <div class="comentario-header">
+            <span class="comentario-nombre">{{ comentario.nombre }}</span>
+            <span class="comentario-fecha">{{ comentario.fecha }}</span>
+          </div>
+          <div class="comentario-texto">{{ comentario.texto }}</div>
+        </div>
+        {% endfor %}
+      </div>
+      
+      <div class="form-comentario">
+        <h4>Agregar comentario</h4>
+        <form id="form-nuevo-comentario">
+          <input type="hidden" id="actividad-id" value="{{ actividad.id }}">
+          
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" minlength="3" maxlength="80" required>
+          <div id="error-nombre" class="error"></div>
+          
+          <label for="texto">Comentario:</label>
+          <textarea id="texto" name="texto" rows="4" cols="50" minlength="5" required></textarea>
+          <div id="error-texto" class="error"></div>
+          
+          <button type="submit" class="btn">Agregar comentario</button>
+        </form>
+        <div id="mensaje-exito" class="mensaje-exito"></div>
+      </div>
+    </div>
   </div>
+
+  <script src="{{ url_for('static', filename='js/comentarios.js') }}"></script>
 </body>
 </html>
