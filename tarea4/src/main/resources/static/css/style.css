@@ -1,0 +1,48 @@
+/* src/main/resources/static/css/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.main-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    width: 100%;
+}
+
+.titulo {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tabla-resumen {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-resumen th, .tabla-resumen td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.tabla-resumen th {
+    background-color: #2256ff;
+    color: #ffffff;
+}
+
+.tabla-resumen tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
