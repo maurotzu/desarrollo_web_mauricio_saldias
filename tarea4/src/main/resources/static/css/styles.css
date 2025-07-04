@@ -1,4 +1,3 @@
-/* src/main/resources/static/css/styles.css */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -27,9 +26,18 @@ body {
     margin-bottom: 20px;
 }
 
+.subtitulo {
+    font-family: 'Arial', sans-serif;
+    color: #555;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .tabla-resumen {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 .tabla-resumen th, .tabla-resumen td {
@@ -47,3 +55,96 @@ body {
     background-color: #f9f9f9;
 }
 
+.evaluar-btn {
+    color: #2256ff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.evaluar-btn:hover {
+    color: #1a45cc;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-dialog {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-title {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.form-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-primary {
+    background-color: #2256ff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1a45cc;
+}
+
+.me-2 {
+    margin-right: 8px;
+}
+
+.mb-3 {
+    margin-bottom: 16px;
+}
